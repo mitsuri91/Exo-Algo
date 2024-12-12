@@ -310,9 +310,16 @@ console.info("Exercice 21 : ", anagram("listen", "silent"));
 // Écrivez une fonction qui enlève les doubles lettres d'une chaîne donnée.
 // Exemple : removeDoubleLetters("google") // "gogle"
 
-// export const removeDoubleLetters = () => {}
+export const removeDoubleLetters = (mot) => {
+	const caractere = mot.split("");
+	let result = "";
+	for (let i = 0; i < mot.length; i++) {
+		if (caractere[i] !== caractere[i + 1]) result += caractere[i];
+	}
+	return result;
+};
 
-// console.info("Exercice 22 : ", removeDoubleLetters("google"));
+console.info("Exercice 22 : ", removeDoubleLetters("google"));
 
 //----------------------------------------------------------------------------------------------//
 
@@ -320,13 +327,17 @@ console.info("Exercice 21 : ", anagram("listen", "silent"));
 // Écrivez une fonction qui prend un tableau de 10 entiers (entre 0 et 9) et renvoie une chaîne de caractères sous la forme d'un numéro de téléphone.
 // Exemple : createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]) // "(123) 456-7890"
 
-// export const createPhoneNumber = () => {
-//    };
+export const createPhoneNumber = (number) => {
+	const firstPart = number.slice(0, 3).join("");
+	const secondPart = number.slice(3, 6).join("");
+	const thirdPart = number.slice(6).join("");
+	return `(${firstPart}) ${secondPart}-${thirdPart}`;
+};
 
-// console.info(
-// 	"Exercice 23 : ",
-// 	createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]),
-// );
+console.info(
+	"Exercice 23 : ",
+	createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]),
+);
 
 //----------------------------------------------------------------------------------------------//
 // EXERCICE 24
@@ -334,11 +345,15 @@ console.info("Exercice 21 : ", anagram("listen", "silent"));
 // Écrivez une fonction nommée "findMissingLetter" qui prend en paramètre un tableau d'une série de lettres et qui renvoie la lettre manquante de la série.
 // Exemple : findMissingLetter(["a", "b", "c", "d", "f"]) // "e"
 
-// export const findMissingLetter = () => {
+export const findMissingLetter = (arrayLetter) => {
+	console.log(arrayLetter);
+	// for (let i = 0; i < arrayLetter.length; i++)
+	// 	if (arrayLetter[i].charCodeAt(0) + 1 !== arrayLetter[i + 1].charCodeAt(0)) {
+	// 		return string.fromCharCorde(arrayLetter[i].charCodeAt(0) + 1);
+	// 	}
+};
 
-// };
-
-// console.info("Exercice 24 : ", findMissingLetter(["a", "b", "c", "d", "f"]));
+console.info("Exercice 24 : ", findMissingLetter(["a", "b", "c", "d", "f"]));
 
 //----------------------------------------------------------------------------------------------//
 
@@ -430,3 +445,91 @@ console.info("Exercice 21 : ", anagram("listen", "silent"));
 // 		"3:3",
 // 	]),
 // );
+
+// Voici un exemple de tableau de personnes. Écris une fonction qui à partir d'un tableau similaire reçu en paramètre renverra un nouveau tableau,
+// lui-même contenant deux sous-tableaux :
+// Le premier contient uniquement des devs web seniors
+// Le second ne contient que des data analysts seniors
+// (Étant donné qu'une personne est senior si elle a 5 ans d'expérience ou plus)
+
+// const persons = [
+// 	{ name: "Mary", experience: 2, job: "web dev" },
+// 	{ name: "Tony", experience: 6, job: "data analyst" },
+// 	{ name: "John", experience: 2, job: "data analyst" },
+// 	{ name: "Jane", experience: 6, job: "web dev" },
+// 	{ name: "Maggie", experience: 2, job: "web dev" },
+// 	{ name: "Leonardo", experience: 2, job: "data analyst" },
+// 	{ name: "Carla", experience: 4, job: "data analyst" },
+// 	{ name: "Mickael", experience: 7, job: "web dev" },
+// 	{ name: "Penelope", experience: 7, job: "web dev" },
+// 	{ name: "Homer", experience: 5, job: "data analyst" },
+// 	{ name: "Leonardo", experience: 2, job: "data analyst" },
+// 	{ name: "Carla", experience: 4, job: "web dev" },
+// 	{ name: "Lisa", experience: 3, job: "web dev" },
+// 	{ name: "Millie", experience: 5, job: "data analyst" },
+// 	{ name: "Penelope", experience: 7, job: "web dev" },
+// ];
+
+// function findSeniors(persons) {
+// 	const grp = Object.groupBy(
+// 		persons,
+// 		({ job, experience }) => `${job}-${experience >= 5 ? "sénior" : "junior"}`,
+// 	);
+
+// 	return [grp["web dev-sénior"], grp["data analyst-sénior"]];
+
+// 	// Your code here !
+// }
+// console.log(findSeniors(persons));
+
+/*
+Un employé de théâtre souhaite obtenir la liste de tous les sièges de sa salle principale.
+Dans la salle les places sont réparties comme suit :
+   - Il y a 26 colonnes de sièges, numérotées de "1" » à "26".
+   - Chaque colonne contient 100 sièges, numérotés de "1" à "100".
+
+Complète la fonction theaterSieges pour qu'elle renvoie un tableau
+où chaque sous-tableau répertorie les positions des sièges dans une rangée.
+
+exemple du résultat final :
+
+[
+  ["1-1", "1-2", "1-3", ..., "1-100"],
+  ["2-1", "2-2", "2-3", ..., "2-100"],
+  ...
+  ["26-1", "26-2", "26-3", ..., "26-100"]
+]
+*/
+// Un employé de théâtre souhaite obtenir la liste de tous les sièges de sa salle principale.
+// Dans la salle les places sont réparties comme suit :
+//    - Il y a 26 colonnes de sièges, numérotées de "1" » à "26".
+//    - Chaque colonne contient 100 sièges, numérotés de "1" à "100".
+
+// Complète la fonction theaterSieges pour qu'elle renvoie un tableau
+// où chaque sous-tableau répertorie les positions des sièges dans une rangée.
+
+// exemple du résultat final :
+
+// [
+//   ["1-1", "1-2", "1-3", ..., "1-100"],
+//   ["2-1", "2-2", "2-3", ..., "2-100"],
+//   ...
+//   ["26-1", "26-2", "26-3", ..., "26-100"]
+// ]
+// const colonne = [];
+// const siege = [];
+// const theatre = [];
+// for (let i = 1; i <= 26; i++) {
+// 	colonne.push(i);
+// 	for (let j = 0; j <= 100; j++) {
+// 		siege.push(colonne + "-" + j);
+// 	}
+// }
+// console.log(colonne);
+// console.log(siege);
+
+// function theaterSieges(sieges, colonnes) {
+// 	// Your code here !
+// }
+
+// Your code here !
