@@ -346,10 +346,15 @@ console.info(
 // Exemple : findMissingLetter(["a", "b", "c", "d", "f"]) // "e"
 
 export const findMissingLetter = (arrayLetter) => {
-	console.log(arrayLetter);
+	const asccii = arrayLetter.map((letter) => letter.charCodeAt(0));
+	return String.fromCharCode(
+		asccii.find((letter, index, array) => array[index + 1] - array[index] > 1) +
+			1,
+	);
+
 	// for (let i = 0; i < arrayLetter.length; i++)
 	// 	if (arrayLetter[i].charCodeAt(0) + 1 !== arrayLetter[i + 1].charCodeAt(0)) {
-	// 		return string.fromCharCorde(arrayLetter[i].charCodeAt(0) + 1);
+	// 		return String.fromCharCode(arrayLetter[i].charCodeAt(0) + 1);
 	// 	}
 };
 
@@ -361,13 +366,14 @@ console.info("Exercice 24 : ", findMissingLetter(["a", "b", "c", "d", "f"]));
 // Écrivez une fonction qui prend un tableau de string et renvoie un tableau de string triées par ordre alphabétique.
 // Exemple : sortString(["Banana", "Orange", "Apple", "Mango"]) // ["Apple", "Banana", "Mango", "Orange"]
 
-// export const sortString = () => {;
-//   };
+export const sortString = (array) => {
+	return array.sort();
+};
 
-// console.info(
-// 	"Exercice 25 : ",
-// 	sortString(["Banana", "Orange", "Apple", "Mango"]),
-// );
+console.info(
+	"Exercice 25 : ",
+	sortString(["Banana", "Orange", "Apple", "Mango"]),
+);
 
 //----------------------------------------------------------------------------------------------//
 // EXERCICE 26
@@ -376,9 +382,11 @@ console.info("Exercice 24 : ", findMissingLetter(["a", "b", "c", "d", "f"]));
 // Exemple : otherAngle(30, 60) // 90
 // Pour trouver le troisième angle, soustrayez la somme des deux angles donnés à 180 degrés.
 
-// export const otherAngle = () => {};
+export const otherAngle = (angle1, angle2) => {
+	return 180 - (angle1 + angle2);
+};
 
-// console.info("Exercice 26 : ", otherAngle(30, 60));
+console.info("Exercice 26 : ", otherAngle(30, 60));
 
 //----------------------------------------------------------------------------------------------//
 // EXERCICE 27
@@ -387,11 +395,14 @@ console.info("Exercice 24 : ", findMissingLetter(["a", "b", "c", "d", "f"]));
 // Une année bissextile est divisible par 4, sauf si elle est divisible par 100, à moins qu'elle ne soit également divisible par 400.
 // Exemple : isLeapYear(2020) // true
 
-// export const isLeapYear = () => {
+export const isLeapYear = (year) => {
+	if ((year % 4 === 0 && year % 100 !== 0) || year % 400 === 0) {
+		return true;
+	}
+	return false;
+};
 
-//   };
-
-// console.info("Exercice 27 : ", isLeapYear(2022));
+console.info("Exercice 27 : ", isLeapYear(2022));
 
 //----------------------------------------------------------------------------------------------//
 // EXERCICE 28
@@ -401,11 +412,13 @@ console.info("Exercice 24 : ", findMissingLetter(["a", "b", "c", "d", "f"]));
 // Le deuxième sous-tableau doit inclure les noms des animaux sauvages.
 // Exemple : sortAnimals(animals) // [["Cat", "Dog"], ["Eagle", "Monkey"]]
 
-// export const sortAnimals = () => {
+export const sortAnimals = (animals) => {
+	const domestiques = animals.slice(0, 2);
+	const sauvages = animals.slice(2);
+	return [domestiques, sauvages];
+};
 
-//   };
-
-//  console.info("Exercice 28 : ", sortAnimals(["Cat", "Dog", "Eagle", "Monkey"]));
+console.info("Exercice 28 : ", sortAnimals(["Cat", "Dog", "Eagle", "Monkey"]));
 
 //----------------------------------------------------------------------------------------------//
 // EXERCICE 29
@@ -414,10 +427,8 @@ console.info("Exercice 24 : ", findMissingLetter(["a", "b", "c", "d", "f"]));
 // Exemple : Si on appelle decodeMessage("XUBBE MEHBT"), la fonction doit renvoyer "HELLO WORLD".
 // https://fr.wikipedia.org/wiki/Chiffrement_par_décalage
 
-// export const decodeMessage = () => {
-
-// };
-// console.info("Exercice 29 :", decodeMessage("XUBBE MEHBT"));
+export const decodeMessage = (message) => {};
+console.info("Exercice 29 :", decodeMessage("XUBBE MEHBT"));
 
 //----------------------------------------------------------------------------------------------//
 // EXERCICE 30
